@@ -3,518 +3,721 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Квантовый Сдвиг — Академия</title>
+<title>Квантовый Взлёт — Венера Татина</title>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --gold: #C9A84C;
-    --gold-light: #E8C97A;
-    --dark: #0A0A1A;
-    --deep: #080818;
-    --purple: #2D1B69;
-    --purple-light: #6B46C1;
-    --pink: #E879A0;
-    --white: #F0EBF8;
-    --text: #D4C9F0;
-  }
+:root {
+  --bg:    #162545;
+  --bg2:   #1b3058;
+  --bbox:  #1a2d50;
+  --gold:  #c9a84c;
+  --gold2: #e8c97a;
+  --text:  #ddeeff;
+  --dim:   #a0bcd8;
+  --bord:  #2a4070;
+  --rbox:  #3a1a1a;
+  --rline: #c0392b;
+  --pink:  #c4789a;
+}
 
-  * { margin: 0; padding: 0; box-sizing: border-box; }
+* { margin: 0; padding: 0; box-sizing: border-box; }
 
-  body {
-    background: var(--deep);
-    color: var(--white);
-    font-family: 'Montserrat', sans-serif;
-    overflow-x: hidden;
-  }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Montserrat', sans-serif;
+  overflow-x: hidden;
+}
 
-  /* ===== STARS BACKGROUND ===== */
-  .stars {
-    position: fixed;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    pointer-events: none;
-    z-index: 0;
-    overflow: hidden;
-  }
-  .star {
-    position: absolute;
-    border-radius: 50%;
-    background: white;
-    animation: twinkle var(--dur) ease-in-out infinite;
-    opacity: 0;
-  }
-  @keyframes twinkle {
-    0%, 100% { opacity: 0; transform: scale(0.5); }
-    50% { opacity: var(--op); transform: scale(1); }
-  }
+/* ===== STARS ===== */
+.stars {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+.star {
+  position: absolute;
+  border-radius: 50%;
+  background: var(--gold2);
+  animation: twinkle var(--dur) ease-in-out infinite;
+  opacity: 0;
+}
+@keyframes twinkle {
+  0%, 100% { opacity: 0; transform: scale(0.5); }
+  50% { opacity: var(--op); transform: scale(1); }
+}
 
-  /* ===== HERO SECTION ===== */
-  .hero {
-    position: relative;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    padding: 60px 24px;
-    z-index: 1;
-  }
+/* ===== PAGE WRAP ===== */
+.page-wrapper { max-width: 1200px; margin: 0 auto; }
 
-  .hero::before {
-    content: '';
-    position: absolute;
-    top: -200px; left: 50%;
-    transform: translateX(-50%);
-    width: 800px; height: 800px;
-    background: radial-gradient(ellipse, rgba(107,70,193,0.3) 0%, transparent 70%);
-    pointer-events: none;
-  }
+/* ===== GOLD LINES ===== */
+.gold-line {
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  opacity: 0.45;
+  margin: 0;
+}
 
-  .badge {
-    display: inline-block;
-    border: 1px solid rgba(201,168,76,0.4);
-    color: var(--gold);
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    padding: 8px 20px;
-    border-radius: 50px;
-    margin-bottom: 32px;
-    background: rgba(201,168,76,0.05);
-    animation: fadeDown 0.8s ease both;
-  }
+/* ===== HERO ===== */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 80px 24px 60px;
+  z-index: 1;
+}
 
-  .hero-title {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(48px, 10vw, 90px);
-    font-weight: 300;
-    line-height: 1.05;
-    margin-bottom: 8px;
-    animation: fadeDown 0.9s ease 0.1s both;
-  }
+/* corner decoration */
+.corner { position: absolute; width: 38px; height: 38px; }
+.corner.tl { top: 20px; left: 20px; border-top: 2px solid var(--gold); border-left: 2px solid var(--gold); }
+.corner.tr { top: 20px; right: 20px; border-top: 2px solid var(--gold); border-right: 2px solid var(--gold); }
+.corner.bl { bottom: 20px; left: 20px; border-bottom: 2px solid var(--gold); border-left: 2px solid var(--gold); }
+.corner.br { bottom: 20px; right: 20px; border-bottom: 2px solid var(--gold); border-right: 2px solid var(--gold); }
 
-  .hero-title em {
-    font-style: italic;
-    background: linear-gradient(135deg, var(--gold-light), var(--pink), var(--gold));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-  }
+.badge-top {
+  display: inline-block;
+  border: 1px solid rgba(201,168,76,0.5);
+  color: var(--gold);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  padding: 8px 24px;
+  border-radius: 50px;
+  margin-bottom: 36px;
+  background: rgba(201,168,76,0.07);
+  animation: fadeDown 0.8s ease both;
+}
 
-  .hero-subtitle-line {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(22px, 5vw, 42px);
-    font-weight: 300;
-    font-style: italic;
-    color: rgba(212,201,240,0.7);
-    margin-bottom: 40px;
-    animation: fadeDown 1s ease 0.2s both;
-  }
+.hero-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(56px, 12vw, 110px);
+  font-weight: 300;
+  line-height: 1.0;
+  margin-bottom: 6px;
+  animation: fadeDown 0.9s ease 0.1s both;
+  color: var(--text);
+}
+.hero-title em {
+  font-style: italic;
+  color: var(--gold);
+}
 
-  .hero-desc {
-    max-width: 640px;
-    font-size: 16px;
-    font-weight: 300;
-    line-height: 1.8;
-    color: var(--text);
-    margin-bottom: 48px;
-    animation: fadeDown 1s ease 0.3s both;
-  }
+.hero-sub {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(18px, 4vw, 32px);
+  font-weight: 300;
+  font-style: italic;
+  color: var(--dim);
+  margin-bottom: 36px;
+  animation: fadeDown 1s ease 0.2s both;
+}
 
-  .hero-desc strong {
-    color: var(--gold-light);
-    font-weight: 500;
-  }
+.divider {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin: 24px auto;
+  width: 300px;
+}
+.divider-line {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold));
+  opacity: 0.6;
+}
+.divider-line.r { background: linear-gradient(90deg, var(--gold), transparent); }
+.divider-star { color: var(--gold); font-size: 13px; }
 
-  /* ===== PRICE BLOCK ===== */
-  .price-block {
-    display: flex;
-    gap: 20px;
-    flex-wrap: wrap;
-    justify-content: center;
-    margin-bottom: 40px;
-    animation: fadeDown 1s ease 0.4s both;
-  }
+.hero-desc {
+  max-width: 620px;
+  font-size: 15px;
+  font-weight: 300;
+  line-height: 1.9;
+  color: var(--text);
+  margin-bottom: 52px;
+  animation: fadeDown 1s ease 0.3s both;
+}
+.hero-desc strong { color: var(--gold2); font-weight: 500; }
 
-  .price-card {
-    background: rgba(255,255,255,0.04);
-    border: 1px solid rgba(201,168,76,0.25);
-    border-radius: 20px;
-    padding: 24px 32px;
-    text-align: center;
-    backdrop-filter: blur(10px);
-  }
+/* ===== PRICE BLOCK ===== */
+.price-hero {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 44px;
+  animation: fadeDown 1s ease 0.4s both;
+}
 
-  .price-label {
-    font-size: 11px;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: rgba(212,201,240,0.5);
-    margin-bottom: 8px;
-  }
+.price-card {
+  background: rgba(26,45,80,0.8);
+  border: 1px solid rgba(201,168,76,0.3);
+  border-radius: 20px;
+  padding: 28px 36px;
+  text-align: center;
+  backdrop-filter: blur(10px);
+  position: relative;
+  overflow: hidden;
+}
+.price-card::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0; height: 2px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+}
 
-  .price-amount {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 36px;
-    font-weight: 600;
-    color: var(--gold-light);
-  }
+.price-card.highlight {
+  border-color: var(--gold);
+  box-shadow: 0 0 40px rgba(201,168,76,0.15);
+}
 
-  .price-note {
-    font-size: 12px;
-    color: rgba(212,201,240,0.5);
-    margin-top: 4px;
-  }
+.price-label {
+  font-size: 10px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--dim);
+  margin-bottom: 10px;
+}
 
-  .cta-btn {
-    display: inline-block;
-    background: linear-gradient(135deg, var(--gold), var(--gold-light));
-    color: var(--dark);
-    font-family: 'Montserrat', sans-serif;
-    font-size: 14px;
-    font-weight: 700;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    padding: 18px 48px;
-    border-radius: 50px;
-    text-decoration: none;
-    animation: fadeDown 1s ease 0.5s both;
-    position: relative;
-    overflow: hidden;
-    cursor: pointer;
-    border: none;
-  }
-  .cta-btn::after {
-    content: '';
-    position: absolute;
-    top: 0; left: -100%;
-    width: 100%; height: 100%;
-    background: rgba(255,255,255,0.2);
-    transition: left 0.4s ease;
-  }
-  .cta-btn:hover::after { left: 100%; }
+.price-old {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 26px;
+  font-weight: 400;
+  color: rgba(160,188,216,0.45);
+  text-decoration: line-through;
+  text-decoration-color: var(--rline);
+  text-decoration-thickness: 2px;
+  display: block;
+  margin-bottom: 4px;
+}
 
-  /* ===== INVITATION TEXT ===== */
-  .invitation {
-    position: relative;
-    z-index: 1;
-    max-width: 780px;
-    margin: 0 auto 80px;
-    padding: 60px 40px;
-    background: rgba(255,255,255,0.03);
-    border: 1px solid rgba(201,168,76,0.15);
-    border-radius: 32px;
-    text-align: center;
-  }
+.price-new {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 42px;
+  font-weight: 600;
+  color: var(--gold2);
+  display: block;
+}
 
-  .invitation h2 {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(28px, 5vw, 44px);
-    font-weight: 400;
-    margin-bottom: 28px;
-    line-height: 1.3;
-  }
+.price-note {
+  font-size: 11px;
+  color: var(--dim);
+  margin-top: 6px;
+}
+.price-note.deadline {
+  color: var(--pink);
+  font-weight: 500;
+  letter-spacing: 0.5px;
+}
 
-  .invitation h2 span {
-    background: linear-gradient(135deg, var(--gold-light), var(--pink));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-  }
+.cta-btn {
+  display: inline-block;
+  background: linear-gradient(135deg, var(--gold), var(--gold2));
+  color: var(--bg);
+  font-family: 'Montserrat', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  padding: 18px 52px;
+  border-radius: 50px;
+  text-decoration: none;
+  animation: fadeDown 1s ease 0.5s both;
+  cursor: pointer;
+  border: none;
+  position: relative;
+  overflow: hidden;
+  transition: box-shadow 0.3s;
+}
+.cta-btn:hover { box-shadow: 0 8px 40px rgba(201,168,76,0.35); }
 
-  .invitation p {
-    font-size: 15px;
-    font-weight: 300;
-    line-height: 1.9;
-    color: var(--text);
-    margin-bottom: 20px;
-  }
+/* ===== INVITATION ===== */
+.section-wrap {
+  position: relative;
+  z-index: 1;
+  padding: 0 24px;
+  margin-bottom: 80px;
+}
 
-  .invitation p strong {
-    color: var(--gold-light);
-    font-weight: 500;
-  }
+.invitation {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 60px 48px;
+  background: rgba(26,45,80,0.5);
+  border: 1px solid rgba(201,168,76,0.18);
+  border-radius: 32px;
+  text-align: center;
+}
+.invitation h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(26px, 4vw, 42px);
+  font-weight: 400;
+  margin-bottom: 28px;
+  line-height: 1.35;
+  color: var(--text);
+}
+.invitation h2 span { color: var(--gold); }
+.invitation p {
+  font-size: 15px;
+  font-weight: 300;
+  line-height: 1.9;
+  color: var(--text);
+  margin-bottom: 18px;
+}
+.invitation p strong { color: var(--gold2); font-weight: 500; }
 
-  .divider {
-    width: 60px;
-    height: 1px;
-    background: linear-gradient(90deg, transparent, var(--gold), transparent);
-    margin: 32px auto;
-  }
+/* ===== SECTION TITLE ===== */
+.section-title {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  margin-bottom: 52px;
+  padding: 0 24px;
+}
+.section-title h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(30px, 5vw, 52px);
+  font-weight: 300;
+  margin-bottom: 10px;
+  color: var(--text);
+}
+.section-title h2 em { font-style: italic; color: var(--gold); }
+.section-title p {
+  font-size: 13px;
+  color: var(--dim);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
 
-  /* ===== SECTION TITLE ===== */
-  .section-title {
-    position: relative;
-    z-index: 1;
-    text-align: center;
-    margin-bottom: 48px;
-    padding: 0 24px;
-  }
+/* ===== QUANTUM FIELD SPECIAL BLOCK ===== */
+.quantum-field {
+  position: relative;
+  z-index: 1;
+  max-width: 1100px;
+  margin: 0 auto 80px;
+  padding: 0 24px;
+}
 
-  .section-title h2 {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(32px, 6vw, 56px);
-    font-weight: 300;
-    margin-bottom: 12px;
-  }
+.quantum-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
 
-  .section-title p {
-    font-size: 14px;
-    color: rgba(212,201,240,0.5);
-    letter-spacing: 1px;
-  }
+@media(max-width: 768px) {
+  .quantum-cards { grid-template-columns: 1fr; }
+}
 
-  /* ===== MODULE CARDS ===== */
-  .modules-grid {
-    position: relative;
-    z-index: 1;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-    gap: 24px;
-    max-width: 1100px;
-    margin: 0 auto 80px;
-    padding: 0 24px;
-  }
+.qcard {
+  background: linear-gradient(145deg, rgba(26,45,80,0.9), rgba(22,37,69,0.95));
+  border: 1px solid var(--gold);
+  border-radius: 24px;
+  padding: 36px 28px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.qcard:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 24px 60px rgba(201,168,76,0.18);
+}
+.qcard::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0; height: 3px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+}
+.qcard::after {
+  content: attr(data-num);
+  position: absolute;
+  bottom: -20px; right: 10px;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 120px;
+  font-weight: 600;
+  color: rgba(201,168,76,0.07);
+  line-height: 1;
+  pointer-events: none;
+  user-select: none;
+}
 
-  .module-card {
-    background: linear-gradient(135deg, rgba(45,27,105,0.3), rgba(8,8,24,0.8));
-    border: 1px solid rgba(107,70,193,0.25);
-    border-radius: 24px;
-    padding: 32px;
-    transition: all 0.3s ease;
-    position: relative;
-    overflow: hidden;
-  }
+.qcard-icon {
+  width: 56px; height: 56px;
+  border-radius: 50%;
+  background: rgba(201,168,76,0.12);
+  border: 1px solid rgba(201,168,76,0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 20px;
+  font-size: 22px;
+}
+.qcard-num {
+  font-size: 10px;
+  letter-spacing: 4px;
+  color: var(--gold);
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+.qcard-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 28px;
+  font-weight: 400;
+  font-style: italic;
+  color: var(--gold2);
+  margin-bottom: 14px;
+  line-height: 1.2;
+}
+.qcard-desc {
+  font-size: 13px;
+  font-weight: 300;
+  color: var(--dim);
+  line-height: 1.7;
+}
 
-  .module-card::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 2px;
-    background: linear-gradient(90deg, transparent, var(--gold), var(--pink), transparent);
-    opacity: 0;
-    transition: opacity 0.3s;
-  }
+.quantum-label {
+  display: inline-block;
+  border: 1px solid rgba(201,168,76,0.4);
+  color: var(--gold);
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  padding: 5px 16px;
+  border-radius: 50px;
+  background: rgba(201,168,76,0.06);
+  margin-bottom: 20px;
+}
 
-  .module-card:hover {
-    border-color: rgba(201,168,76,0.4);
-    transform: translateY(-4px);
-    box-shadow: 0 20px 60px rgba(107,70,193,0.2);
-  }
-  .module-card:hover::before { opacity: 1; }
+/* ===== MODULES GRID ===== */
+.modules-grid {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 24px;
+  max-width: 1100px;
+  margin: 0 auto 80px;
+  padding: 0 24px;
+}
 
-  .module-num {
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    color: var(--gold);
-    margin-bottom: 8px;
-  }
+.module-card {
+  background: linear-gradient(135deg, rgba(26,48,88,0.7), rgba(22,37,69,0.9));
+  border: 1px solid var(--bord);
+  border-radius: 24px;
+  padding: 32px;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+.module-card::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0; height: 2px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+.module-card:hover {
+  border-color: rgba(201,168,76,0.45);
+  transform: translateY(-4px);
+  box-shadow: 0 20px 50px rgba(22,37,69,0.5);
+}
+.module-card:hover::before { opacity: 1; }
 
-  .module-title {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 22px;
-    font-weight: 400;
-    font-style: italic;
-    margin-bottom: 8px;
-    line-height: 1.3;
-    color: var(--white);
-  }
+.module-num {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 8px;
+}
+.module-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 21px;
+  font-weight: 400;
+  font-style: italic;
+  margin-bottom: 8px;
+  line-height: 1.35;
+  color: var(--text);
+}
+.module-result {
+  font-size: 12px;
+  color: var(--pink);
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  margin-bottom: 20px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--bord);
+}
+.module-items {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.module-items li {
+  font-size: 13px;
+  font-weight: 300;
+  color: var(--dim);
+  line-height: 1.5;
+  padding-left: 18px;
+  position: relative;
+}
+.module-items li::before {
+  content: '✦';
+  position: absolute;
+  left: 0;
+  color: var(--gold);
+  font-size: 7px;
+  top: 4px;
+}
+.duration-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(201,168,76,0.07);
+  border: 1px solid rgba(201,168,76,0.2);
+  border-radius: 50px;
+  padding: 4px 14px;
+  font-size: 10px;
+  color: var(--gold);
+  margin-top: 20px;
+  letter-spacing: 1px;
+}
 
-  .module-result {
-    font-size: 12px;
-    color: var(--pink);
-    font-weight: 500;
-    letter-spacing: 0.5px;
-    margin-bottom: 20px;
-    padding-bottom: 16px;
-    border-bottom: 1px solid rgba(255,255,255,0.06);
-  }
+/* ===== FOOTER CTA ===== */
+.bottom-cta {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  padding: 80px 24px 100px;
+  max-width: 740px;
+  margin: 0 auto;
+}
+.bottom-cta h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(32px, 6vw, 54px);
+  font-weight: 300;
+  line-height: 1.2;
+  margin-bottom: 20px;
+  color: var(--text);
+}
+.bottom-cta h2 em {
+  font-style: italic;
+  color: var(--gold);
+}
+.bottom-cta p {
+  font-size: 15px;
+  font-weight: 300;
+  color: var(--dim);
+  line-height: 1.8;
+  margin-bottom: 44px;
+}
 
-  .module-items {
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-  }
+.price-final {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 44px;
+}
 
-  .module-items li {
-    font-size: 13px;
-    font-weight: 300;
-    color: var(--text);
-    line-height: 1.5;
-    padding-left: 16px;
-    position: relative;
-  }
+.pf-card {
+  background: rgba(26,45,80,0.8);
+  border: 1px solid rgba(201,168,76,0.3);
+  border-radius: 20px;
+  padding: 24px 32px;
+  min-width: 200px;
+  position: relative;
+}
+.pf-card::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0; height: 2px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+}
+.pf-label {
+  font-size: 10px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--dim);
+  margin-bottom: 10px;
+}
+.pf-old {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 22px;
+  font-weight: 400;
+  color: rgba(160,188,216,0.4);
+  text-decoration: line-through;
+  text-decoration-color: var(--rline);
+  text-decoration-thickness: 2px;
+  display: block;
+  margin-bottom: 2px;
+}
+.pf-amount {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 36px;
+  font-weight: 600;
+  color: var(--gold2);
+  display: block;
+}
+.pf-sub {
+  font-size: 11px;
+  color: var(--dim);
+  margin-top: 6px;
+}
+.pf-sub.urgent { color: var(--pink); font-weight: 500; }
 
-  .module-items li::before {
-    content: '◆';
-    position: absolute;
-    left: 0;
-    color: var(--gold);
-    font-size: 6px;
-    top: 5px;
-  }
+.footer-handle {
+  margin-top: 36px;
+  font-size: 13px;
+  color: var(--dim);
+  letter-spacing: 1px;
+}
+.footer-handle strong { color: var(--gold); }
 
-  .duration-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    background: rgba(201,168,76,0.08);
-    border: 1px solid rgba(201,168,76,0.2);
-    border-radius: 50px;
-    padding: 4px 12px;
-    font-size: 11px;
-    color: var(--gold);
-    margin-top: 20px;
-  }
+/* ===== FOOTER LINE ===== */
+.site-footer {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  padding: 20px 24px 40px;
+  font-size: 9px;
+  letter-spacing: 3px;
+  color: rgba(201,168,76,0.45);
+  text-transform: uppercase;
+}
 
-  /* ===== BOTTOM CTA ===== */
-  .bottom-cta {
-    position: relative;
-    z-index: 1;
-    text-align: center;
-    padding: 80px 24px;
-    max-width: 700px;
-    margin: 0 auto;
-  }
-
-  .bottom-cta h2 {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(32px, 6vw, 54px);
-    font-weight: 300;
-    line-height: 1.2;
-    margin-bottom: 24px;
-  }
-
-  .bottom-cta p {
-    font-size: 15px;
-    font-weight: 300;
-    color: var(--text);
-    line-height: 1.8;
-    margin-bottom: 40px;
-  }
-
-  .price-final {
-    display: flex;
-    gap: 16px;
-    justify-content: center;
-    flex-wrap: wrap;
-    margin-bottom: 40px;
-  }
-
-  .pf-card {
-    background: rgba(255,255,255,0.04);
-    border: 1px solid rgba(201,168,76,0.3);
-    border-radius: 20px;
-    padding: 20px 28px;
-    min-width: 200px;
-  }
-
-  .pf-label {
-    font-size: 11px;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: rgba(212,201,240,0.4);
-    margin-bottom: 8px;
-  }
-
-  .pf-amount {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 32px;
-    font-weight: 600;
-    color: var(--gold-light);
-    display: block;
-  }
-
-  .pf-sub {
-    font-size: 12px;
-    color: rgba(212,201,240,0.4);
-    margin-top: 4px;
-  }
-
-  .handle {
-    margin-top: 40px;
-    font-size: 13px;
-    color: rgba(212,201,240,0.4);
-    letter-spacing: 1px;
-  }
-
-  .handle strong {
-    color: var(--gold);
-  }
-
-  /* ===== ANIMATIONS ===== */
-  @keyframes fadeDown {
-    from { opacity: 0; transform: translateY(-20px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-
-  .page-wrapper {
-    max-width: 1200px;
-    margin: 0 auto;
-  }
+/* ===== ANIMATIONS ===== */
+@keyframes fadeDown {
+  from { opacity: 0; transform: translateY(-18px); }
+  to { opacity: 1; transform: translateY(0); }
+}
 </style>
 </head>
 <body>
 
-<!-- Stars -->
 <div class="stars" id="stars"></div>
 
 <div class="page-wrapper">
 
-  <!-- HERO -->
+  <!-- ===== HERO ===== -->
   <section class="hero">
-    <div class="badge">Академия Квантового Пространства</div>
+    <div class="corner tl"></div>
+    <div class="corner tr"></div>
+    <div class="corner bl"></div>
+    <div class="corner br"></div>
+
+    <div class="badge-top">Академия Квантового Пространства · Венера Татина</div>
+
     <h1 class="hero-title"><em>Квантовый</em><br>Взлёт</h1>
-    <p class="hero-subtitle-line">Трансформация изнутри — взлёт снаружи</p>
+    <p class="hero-sub">Трансформация изнутри — взлёт снаружи</p>
+
+    <div class="divider">
+      <div class="divider-line"></div>
+      <span class="divider-star">✦</span>
+      <div class="divider-line r"></div>
+    </div>
+
     <p class="hero-desc">
       Ты живёшь по чужим сценариям, чувствуешь нехватку сил, денег, гармонии?<br><br>
       <strong>Квантовый Взлёт</strong> — это 3 месяца глубокой системной работы с собой, которая меняет не поведение, а саму основу — твоё мышление, энергию и отношение к миру.
     </p>
-    <div class="price-block">
-      <div class="price-card">
-        <div class="price-label">Полная стоимость</div>
-        <div class="price-amount">150 000 ₸</div>
+
+    <!-- ЦЕНЫ HERO -->
+    <div class="price-hero">
+      <div class="price-card highlight">
+        <div class="price-label">Полная оплата</div>
+        <span class="price-old">300 000 ₸</span>
+        <span class="price-new">210 000 ₸</span>
+        <div class="price-note deadline">до 1 июня — специальная цена</div>
         <div class="price-note">3 месяца · 9 модулей</div>
       </div>
       <div class="price-card">
-        <div class="price-label">Рассрочка</div>
-        <div class="price-amount">50 000 ₸</div>
-        <div class="price-note">в месяц · без переплат</div>
+        <div class="price-label">Внутренняя рассрочка</div>
+        <span class="price-new" style="font-size:36px;">70 000 ₸</span>
+        <div class="price-note deadline">× 3 месяца</div>
+        <div class="price-note">без банка · без переплат</div>
       </div>
     </div>
+
     <a href="https://wa.me/77788633191" target="_blank" class="cta-btn">Хочу на обучение</a>
   </section>
 
-  <!-- INVITATION TEXT -->
-  <div style="padding: 0 24px; margin-bottom: 80px; position: relative; z-index: 1;">
+  <!-- ===== INVITATION ===== -->
+  <div class="section-wrap">
     <div class="invitation">
       <h2>Ты когда-нибудь чувствовала,<br>что <span>застряла в одном месте?</span></h2>
-      <div class="divider"></div>
-      <p>
-        Деньги приходят и уходят. Отношения повторяют один и тот же сценарий. Энергии не хватает даже на мечты. Кажется, что всё идёт не так, как хочется — и непонятно, почему.
-      </p>
-      <p>
-        Это не случайность. Это <strong>квантовое поле</strong>, которое отражает то, что живёт у тебя внутри. Паттерны, унаследованные от рода. Решения, принятые в детстве. Убеждения, которые давно пора отпустить.
-      </p>
-      <div class="divider"></div>
-      <p>
-        <strong>Квантовый Взлёт</strong> — это не очередной курс по позитивному мышлению. Это системная трансформация через <strong>9 модулей</strong>, где ты получишь инструменты, которые работают в реальной жизни — с деньгами, здоровьем, отношениями и собой.
-      </p>
-      <p>
-        Через 3 месяца ты не узнаешь себя — в лучшем смысле этого слова. <strong>Если откликается — это твоё.</strong>
-      </p>
+
+      <div class="divider">
+        <div class="divider-line"></div>
+        <span class="divider-star">✦</span>
+        <div class="divider-line r"></div>
+      </div>
+
+      <p>Деньги приходят и уходят. Отношения повторяют один и тот же сценарий. Энергии не хватает даже на мечты. Кажется, всё идёт не так — и непонятно, почему.</p>
+
+      <p>Это не случайность. Это <strong>квантовое поле</strong>, которое отражает то, что живёт у тебя внутри. Паттерны, унаследованные от рода. Решения, принятые в детстве. Убеждения, которые давно пора отпустить.</p>
+
+      <div class="divider">
+        <div class="divider-line"></div>
+        <span class="divider-star">✦</span>
+        <div class="divider-line r"></div>
+      </div>
+
+      <p><strong>Квантовый Взлёт</strong> — это не очередной курс по позитивному мышлению. Это системная трансформация через <strong>9 модулей</strong>, где ты получишь инструменты, которые работают в реальной жизни — с деньгами, здоровьем, отношениями и собой.</p>
+
+      <p>Через 3 месяца ты не узнаешь себя — в лучшем смысле этого слова. <strong>Если откликается — это твоё.</strong></p>
     </div>
   </div>
 
-  <!-- MODULES -->
+  <!-- ===== РАЗБОРЫ В КВАНТОВОМ ПОЛЕ ===== -->
   <div class="section-title">
-    <h2>9 модулей · 3 месяца</h2>
-    <p>Онлайн · Обратная связь в чате · Глубокая трансформация</p>
+    <div class="quantum-label">Только в этом потоке</div>
+    <h2>Разборы в <em>Квантовом Поле</em></h2>
+    <p>3 живых разбора · Деньги · Здоровье · Отношения</p>
+  </div>
+
+  <div class="quantum-field">
+    <div class="quantum-cards">
+
+      <div class="qcard" data-num="1">
+        <div class="qcard-icon">◈</div>
+        <div class="qcard-num">Разбор 1</div>
+        <div class="qcard-title">Деньги</div>
+        <div class="qcard-desc">Глубокая работа с денежными блоками, родовыми программами нехватки и страхом изобилия. Разбираем твою систему отношений с деньгами через квантовое поле.</div>
+      </div>
+
+      <div class="qcard" data-num="2">
+        <div class="qcard-icon">◈</div>
+        <div class="qcard-num">Разбор 2</div>
+        <div class="qcard-title">Здоровье</div>
+        <div class="qcard-desc">Тело говорит то, что молчит душа. Разбираем психосоматику, скрытые причины болезней и как квантовое поле влияет на физическое состояние.</div>
+      </div>
+
+      <div class="qcard" data-num="3">
+        <div class="qcard-icon">◈</div>
+        <div class="qcard-num">Разбор 3</div>
+        <div class="qcard-title">Отношения</div>
+        <div class="qcard-desc">Повторяющиеся сценарии в отношениях, родовые паттерны, баланс «дать и взять». Разбираем как создать гармоничные отношения через законы системы.</div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="gold-line" style="max-width:1100px; margin: 0 auto 80px; display:block;"></div>
+
+  <!-- ===== ПРОГРАММА ===== -->
+  <div class="section-title">
+    <h2>9 модулей · <em>3 месяца</em></h2>
+    <p>Онлайн · Обратная связь · Глубокая трансформация</p>
   </div>
 
   <div class="modules-grid">
@@ -647,47 +850,56 @@
 
   </div>
 
-  <!-- BOTTOM CTA -->
+  <!-- ===== BOTTOM CTA ===== -->
   <section class="bottom-cta">
-    <h2>Готова к своему<br><em style="font-family:'Cormorant Garamond',serif; font-style:italic; background: linear-gradient(135deg,#E8C97A,#E879A0); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;">Квантовому Взлёту?</em></h2>
+    <h2>Готова к своему<br><em>Квантовому Взлёту?</em></h2>
     <p>Напиши мне — и мы вместе разберём, подходит ли тебе это обучение прямо сейчас. Без давления, без обязательств — просто честный разговор.</p>
+
     <div class="price-final">
       <div class="pf-card">
         <div class="pf-label">Полная оплата</div>
-        <span class="pf-amount">150 000 ₸</span>
+        <span class="pf-old">300 000 ₸</span>
+        <span class="pf-amount">210 000 ₸</span>
+        <div class="pf-sub urgent">до 1 июня — специальная цена</div>
         <div class="pf-sub">3 месяца · 9 модулей</div>
       </div>
       <div class="pf-card">
-        <div class="pf-label">Рассрочка</div>
-        <span class="pf-amount">50 000 ₸</span>
-        <div class="pf-sub">× 3 месяца · без переплат</div>
+        <div class="pf-label">Внутренняя рассрочка</div>
+        <span class="pf-amount">70 000 ₸</span>
+        <div class="pf-sub urgent">× 3 месяца</div>
+        <div class="pf-sub">без банка · без переплат</div>
       </div>
     </div>
+
     <a href="https://wa.me/77788633191" target="_blank" class="cta-btn">Написать Венере в WhatsApp</a>
-    <div class="handle">WhatsApp → <strong>+7 778 863 31 91</strong> · Венера 🤍</div>
+
+    <div class="footer-handle">WhatsApp → <strong>+7 778 863 31 91</strong> · Венера</div>
   </section>
 
 </div>
 
-<script>
-  // Generate stars
-  const container = document.getElementById('stars');
-  for (let i = 0; i < 120; i++) {
-    const star = document.createElement('div');
-    star.className = 'star';
-    const size = Math.random() * 2.5 + 0.5;
-    star.style.cssText = `
-      width: ${size}px;
-      height: ${size}px;
-      left: ${Math.random() * 100}%;
-      top: ${Math.random() * 100}%;
-      --dur: ${Math.random() * 4 + 2}s;
-      --op: ${Math.random() * 0.7 + 0.2};
-      animation-delay: ${Math.random() * 5}s;
-    `;
-    container.appendChild(star);
-  }
-</script>
+<!-- FOOTER -->
+<div class="gold-line"></div>
+<footer class="site-footer">
+  К В А Н Т О В Ы Й &nbsp; В З Л Ё Т &nbsp; · &nbsp; В Е Н Е Р А &nbsp; Т А Т И Н А
+</footer>
 
+<script>
+const container = document.getElementById('stars');
+for (let i = 0; i < 130; i++) {
+  const star = document.createElement('div');
+  star.className = 'star';
+  const size = Math.random() * 2.5 + 0.4;
+  star.style.cssText = `
+    width:${size}px; height:${size}px;
+    left:${Math.random()*100}%;
+    top:${Math.random()*100}%;
+    --dur:${Math.random()*4+2}s;
+    --op:${Math.random()*0.6+0.15};
+    animation-delay:${Math.random()*6}s;
+  `;
+  container.appendChild(star);
+}
+</script>
 </body>
 </html>
