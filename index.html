@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preload" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Montserrat:wght@300;400;500;600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
-<noscript><link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet"></noscript>
+<noscript></noscript>
 <style>
 :root {
   --bg:    #162545;
@@ -608,6 +608,7 @@ body {
 </head>
 <body>
 
+<main>
 <div class="stars" id="stars"></div>
 
 <div class="page-wrapper">
@@ -890,7 +891,7 @@ body {
 
 <script>
 const container = document.getElementById('stars');
-for (let i = 0; i < 130; i++) {
+for (let i = 0; i < 60; i++) {
   const star = document.createElement('div');
   star.className = 'star';
   const size = Math.random() * 2.5 + 0.4;
@@ -905,6 +906,7 @@ for (let i = 0; i < 130; i++) {
   container.appendChild(star);
 }
 </script>
+</main>
 </main>
 </body>
 </html>
