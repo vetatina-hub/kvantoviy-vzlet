@@ -3,908 +3,362 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Квантовый Взлёт — Венера Татина</title>
-<meta name="description" content="Квантовый Взлёт — флагманский курс Венеры Татиной. 3 месяца глубокой трансформации через работу с квантовым полем. Деньги, отношения, здоровье, энергия. Запись открыта.">
+<title>Венера Татина · Академия Квантового Пространства</title>
+<meta name="description" content="Венера Татина — Мастер Разборов Квантовых Полей. Академия Квантового Пространства. Курсы Квантовый Взлёт и Алхимия Денег. Трансформация через законы квантового поля.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="preload" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Montserrat:wght@300;400;500;600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
-<noscript></noscript>
+<link rel="preload" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@200;300;400&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@200;300;400&display=swap" rel="stylesheet"></noscript>
 <style>
-:root {
-  --bg:    #162545;
-  --bg2:   #1b3058;
-  --bbox:  #1a2d50;
-  --gold:  #c9a84c;
-  --gold2: #e8c97a;
-  --text:  #ddeeff;
-  --dim:   #a0bcd8;
-  --bord:  #2a4070;
-  --rbox:  #3a1a1a;
-  --rline: #c0392b;
-  --pink:  #c4789a;
-}
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --gold: #c9a96e;
+    --gold-light: #e8d5a3;
+    --deep: #0d0b08;
+    --card: #1a1610;
+    --text: #e8ddd0;
+    --muted: #9a8a78;
+  }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Jost', sans-serif;
+    font-weight: 300;
+    background: var(--deep);
+    color: var(--text);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+  body::before {
+    content: '';
+    position: fixed; inset: 0;
+    background:
+      radial-gradient(ellipse 60% 50% at 80% 10%, rgba(201,169,110,0.07) 0%, transparent 60%),
+      radial-gradient(ellipse 40% 60% at 10% 80%, rgba(201,169,110,0.05) 0%, transparent 60%);
+    pointer-events: none; z-index: 0;
+  }
 
-* { margin: 0; padding: 0; box-sizing: border-box; }
+  /* HERO */
+  .hero {
+    position: relative; z-index: 1;
+    min-height: 100vh;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    text-align: center; padding: 60px 24px 80px;
+  }
+  .hero-label {
+    font-weight: 200; font-size: 10px;
+    letter-spacing: 0.35em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 32px;
+    opacity: 0; animation: fadeUp 0.8s ease forwards 0.2s;
+  }
 
-body {
-  background: var(--bg);
-  color: var(--text);
-  font-family: 'Montserrat', sans-serif;
-  overflow-x: hidden;
-}
+  /* Круглое фото */
+  .photo-circle-wrap {
+    position: relative; width: 164px; height: 164px;
+    margin: 0 auto 32px;
+    opacity: 0; animation: fadeUp 0.9s ease forwards 0.35s;
+  }
+  .photo-circle-wrap::before {
+    content: '';
+    position: absolute; inset: -3px; border-radius: 50%;
+    background: conic-gradient(var(--gold), #e8d5a3, #8a6a30, var(--gold));
+    z-index: 0; animation: rotateBorder 6s linear infinite;
+  }
+  @keyframes rotateBorder {
+    from { transform: rotate(0deg); } to { transform: rotate(360deg); }
+  }
+  .photo-circle {
+    position: relative; z-index: 1;
+    width: 160px; height: 160px;
+    border-radius: 50%; overflow: hidden;
+    border: 3px solid var(--deep);
+  }
+  .photo-circle img {
+    width: 100%; height: 100%;
+    object-fit: cover; object-position: center top;
+    display: block;
+  }
 
-/* ===== STARS ===== */
-.stars {
-  position: fixed;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  pointer-events: none;
-  z-index: 0;
-  overflow: hidden;
-}
-.star {
-  position: absolute;
-  border-radius: 50%;
-  background: var(--gold2);
-  animation: twinkle var(--dur) ease-in-out infinite;
-  opacity: 0;
-}
-@keyframes twinkle {
-  0%, 100% { opacity: 0; transform: scale(0.5); }
-  50% { opacity: var(--op); transform: scale(1); }
-}
+  .hero-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300; font-size: clamp(48px, 11vw, 88px);
+    line-height: 1.0; letter-spacing: 0.02em;
+    color: var(--text); margin-bottom: 8px;
+    opacity: 0; animation: fadeUp 0.9s ease forwards 0.5s;
+  }
+  .hero-name em { font-style: italic; color: var(--gold-light); }
+  .divider {
+    width: 40px; height: 1px; background: var(--gold);
+    margin: 26px auto;
+    opacity: 0; animation: fadeUp 0.8s ease forwards 0.65s;
+  }
+  .hero-title {
+    font-weight: 200; font-size: clamp(11px, 2.5vw, 14px);
+    letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 22px;
+    opacity: 0; animation: fadeUp 0.8s ease forwards 0.75s;
+  }
+  .hero-desc {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300; font-style: italic;
+    font-size: clamp(17px, 3.5vw, 22px); line-height: 1.75;
+    color: var(--muted); max-width: 560px; margin: 0 auto 48px;
+    opacity: 0; animation: fadeUp 0.9s ease forwards 0.9s;
+  }
+  .hero-desc strong { color: var(--text); font-style: normal; font-weight: 400; }
+  .scroll-hint {
+    font-size: 10px; letter-spacing: 0.3em; text-transform: uppercase;
+    color: var(--muted);
+    opacity: 0; animation: fadeUp 0.8s ease forwards 1.2s;
+  }
+  .scroll-hint::after {
+    content: ''; display: block;
+    width: 1px; height: 40px;
+    background: linear-gradient(to bottom, var(--gold), transparent);
+    margin: 12px auto 0;
+  }
 
-/* ===== PAGE WRAP ===== */
-.page-wrapper { max-width: 1200px; margin: 0 auto; }
+  /* ABOUT + PORTRAIT */
+  .about-section {
+    position: relative; z-index: 1;
+    max-width: 860px; margin: 0 auto;
+    padding: 80px 24px;
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 60px; align-items: center;
+  }
+  @media (max-width: 640px) {
+    .about-section { grid-template-columns: 1fr; gap: 40px; }
+  }
 
-/* ===== GOLD LINES ===== */
-.gold-line {
-  width: 100%;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, var(--gold), transparent);
-  opacity: 0.45;
-  margin: 0;
-}
+  .portrait-wrap { position: relative; }
+  .portrait-frame {
+    position: relative; overflow: hidden; border-radius: 4px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+  }
+  .portrait-frame::after {
+    content: '';
+    position: absolute; inset: 0;
+    border: 1px solid rgba(201,169,110,0.25);
+    border-radius: 4px; pointer-events: none; z-index: 2;
+  }
+  .portrait-frame img {
+    width: 100%; height: auto;
+    display: block; object-fit: cover;
+  }
+  .portrait-accent-tl {
+    position: absolute; top: -10px; left: -10px;
+    width: 40px; height: 40px;
+    border-top: 1px solid var(--gold);
+    border-left: 1px solid var(--gold);
+    opacity: 0.6;
+  }
+  .portrait-accent-br {
+    position: absolute; bottom: -10px; right: -10px;
+    width: 40px; height: 40px;
+    border-bottom: 1px solid var(--gold);
+    border-right: 1px solid var(--gold);
+    opacity: 0.6;
+  }
 
-/* ===== HERO ===== */
-.hero {
-  position: relative;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  padding: 80px 24px 60px;
-  z-index: 1;
-}
+  .section-label {
+    font-size: 9px; letter-spacing: 0.4em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 24px;
+    display: flex; align-items: center; gap: 14px;
+  }
+  .section-label::after {
+    content: ''; flex: 1; max-width: 40px;
+    height: 1px; background: var(--gold); opacity: 0.4;
+  }
+  .about-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(17px, 3.2vw, 20px); line-height: 1.85;
+    color: var(--text); font-weight: 300;
+  }
+  .about-text p { margin-bottom: 16px; }
+  .about-text p:last-child { margin-bottom: 0; }
+  .about-text .highlight { color: var(--gold-light); font-style: italic; }
 
-/* corner decoration */
-.corner { position: absolute; width: 38px; height: 38px; }
-.corner.tl { top: 20px; left: 20px; border-top: 2px solid var(--gold); border-left: 2px solid var(--gold); }
-.corner.tr { top: 20px; right: 20px; border-top: 2px solid var(--gold); border-right: 2px solid var(--gold); }
-.corner.bl { bottom: 20px; left: 20px; border-bottom: 2px solid var(--gold); border-left: 2px solid var(--gold); }
-.corner.br { bottom: 20px; right: 20px; border-bottom: 2px solid var(--gold); border-right: 2px solid var(--gold); }
+  /* ORNAMENT */
+  .ornament {
+    text-align: center; color: var(--gold);
+    font-size: 16px; letter-spacing: 0.3em; opacity: 0.5;
+    position: relative; z-index: 1; padding: 0 24px 20px;
+  }
 
-.badge-top {
-  display: inline-block;
-  border: 1px solid rgba(201,168,76,0.5);
-  color: var(--gold);
-  font-size: 10px;
-  font-weight: 600;
-  letter-spacing: 4px;
-  text-transform: uppercase;
-  padding: 8px 24px;
-  border-radius: 50px;
-  margin-bottom: 36px;
-  background: rgba(201,168,76,0.07);
-  animation: fadeDown 0.8s ease both;
-}
+  /* CARDS */
+  .cards-label {
+    text-align: center; font-size: 9px;
+    letter-spacing: 0.4em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 40px;
+    display: flex; align-items: center; gap: 16px; justify-content: center;
+    position: relative; z-index: 1; padding: 0 24px;
+  }
+  .cards-label::before, .cards-label::after {
+    content: ''; flex: 1; max-width: 60px;
+    height: 1px; background: var(--gold); opacity: 0.4;
+  }
+  .cards {
+    display: flex; flex-direction: column; gap: 20px;
+    position: relative; z-index: 1;
+    max-width: 600px; margin: 0 auto; padding: 0 24px 80px;
+  }
+  .card {
+    background: var(--card);
+    border: 1px solid rgba(201,169,110,0.15);
+    border-radius: 2px; padding: 32px 28px;
+    text-decoration: none; color: inherit; display: block;
+    position: relative; overflow: hidden;
+    transition: border-color 0.3s ease, transform 0.3s ease;
+  }
+  .card::before {
+    content: ''; position: absolute; top: 0; left: 0;
+    width: 2px; height: 0; background: var(--gold);
+    transition: height 0.4s ease;
+  }
+  .card:hover { border-color: rgba(201,169,110,0.4); transform: translateY(-2px); }
+  .card:hover::before { height: 100%; }
+  .card-tag {
+    font-size: 9px; letter-spacing: 0.35em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 12px;
+  }
+  .card-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(24px, 6vw, 32px); font-weight: 300;
+    color: var(--text); line-height: 1.2; margin-bottom: 10px;
+  }
+  .card-title em { font-style: italic; color: var(--gold-light); }
+  .card-desc {
+    font-size: 14px; font-weight: 300; color: var(--muted);
+    line-height: 1.7; margin-bottom: 18px;
+  }
+  .card-cta {
+    font-size: 10px; letter-spacing: 0.25em; text-transform: uppercase;
+    color: var(--gold); display: flex; align-items: center; gap: 10px;
+  }
+  .card-cta::after {
+    content: ''; width: 24px; height: 1px; background: var(--gold);
+    transition: width 0.3s ease;
+  }
+  .card:hover .card-cta::after { width: 40px; }
+  .card-wa {
+    background: transparent; border: 1px solid rgba(201,169,110,0.25);
+    text-align: center;
+  }
+  .card-wa .card-cta { justify-content: center; }
+  .card-wa .card-cta::after { display: none; }
 
-.hero-title {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(56px, 12vw, 110px);
-  font-weight: 300;
-  line-height: 1.0;
-  margin-bottom: 6px;
-  animation: fadeDown 0.9s ease 0.1s both;
-  color: var(--text);
-}
-.hero-title em {
-  font-style: italic;
-  color: var(--gold);
-}
+  footer {
+    position: relative; z-index: 1; text-align: center;
+    padding: 40px 24px;
+    border-top: 1px solid rgba(201,169,110,0.1);
+    font-size: 10px; letter-spacing: 0.25em; text-transform: uppercase;
+    color: var(--muted);
+  }
 
-.hero-sub {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(18px, 4vw, 32px);
-  font-weight: 300;
-  font-style: italic;
-  color: var(--dim);
-  margin-bottom: 36px;
-  animation: fadeDown 1s ease 0.2s both;
-}
-
-.divider {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  margin: 24px auto;
-  width: 300px;
-}
-.divider-line {
-  flex: 1;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, var(--gold));
-  opacity: 0.6;
-}
-.divider-line.r { background: linear-gradient(90deg, var(--gold), transparent); }
-.divider-star { color: var(--gold); font-size: 13px; }
-
-.hero-desc {
-  max-width: 620px;
-  font-size: 15px;
-  font-weight: 300;
-  line-height: 1.9;
-  color: var(--text);
-  margin-bottom: 52px;
-  animation: fadeDown 1s ease 0.3s both;
-}
-.hero-desc strong { color: var(--gold2); font-weight: 500; }
-
-/* ===== PRICE BLOCK ===== */
-.price-hero {
-  display: flex;
-  gap: 20px;
-  flex-wrap: wrap;
-  justify-content: center;
-  margin-bottom: 44px;
-  animation: fadeDown 1s ease 0.4s both;
-}
-
-.price-card {
-  background: rgba(26,45,80,0.8);
-  border: 1px solid rgba(201,168,76,0.3);
-  border-radius: 20px;
-  padding: 28px 36px;
-  text-align: center;
-  backdrop-filter: blur(10px);
-  position: relative;
-  overflow: hidden;
-}
-.price-card::before {
-  content: '';
-  position: absolute; top: 0; left: 0; right: 0; height: 2px;
-  background: linear-gradient(90deg, transparent, var(--gold), transparent);
-}
-
-.price-card.highlight {
-  border-color: var(--gold);
-  box-shadow: 0 0 40px rgba(201,168,76,0.15);
-}
-
-.price-label {
-  font-size: 10px;
-  letter-spacing: 3px;
-  text-transform: uppercase;
-  color: var(--dim);
-  margin-bottom: 10px;
-}
-
-.price-old {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 26px;
-  font-weight: 400;
-  color: rgba(160,188,216,0.45);
-  text-decoration: line-through;
-  text-decoration-color: var(--rline);
-  text-decoration-thickness: 2px;
-  display: block;
-  margin-bottom: 4px;
-}
-
-.price-new {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 42px;
-  font-weight: 600;
-  color: var(--gold2);
-  display: block;
-}
-
-.price-note {
-  font-size: 11px;
-  color: var(--dim);
-  margin-top: 6px;
-}
-.price-note.deadline {
-  color: var(--pink);
-  font-weight: 500;
-  letter-spacing: 0.5px;
-}
-
-.cta-btn {
-  display: inline-block;
-  background: linear-gradient(135deg, var(--gold), var(--gold2));
-  color: var(--bg);
-  font-family: 'Montserrat', sans-serif;
-  font-size: 13px;
-  font-weight: 700;
-  letter-spacing: 2.5px;
-  text-transform: uppercase;
-  padding: 18px 52px;
-  border-radius: 50px;
-  text-decoration: none;
-  animation: fadeDown 1s ease 0.5s both;
-  cursor: pointer;
-  border: none;
-  position: relative;
-  overflow: hidden;
-  transition: box-shadow 0.3s;
-}
-.cta-btn:hover { box-shadow: 0 8px 40px rgba(201,168,76,0.35); }
-
-/* ===== INVITATION ===== */
-.section-wrap {
-  position: relative;
-  z-index: 1;
-  padding: 0 24px;
-  margin-bottom: 80px;
-}
-
-.invitation {
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 60px 48px;
-  background: rgba(26,45,80,0.5);
-  border: 1px solid rgba(201,168,76,0.18);
-  border-radius: 32px;
-  text-align: center;
-}
-.invitation h2 {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(26px, 4vw, 42px);
-  font-weight: 400;
-  margin-bottom: 28px;
-  line-height: 1.35;
-  color: var(--text);
-}
-.invitation h2 span { color: var(--gold); }
-.invitation p {
-  font-size: 15px;
-  font-weight: 300;
-  line-height: 1.9;
-  color: var(--text);
-  margin-bottom: 18px;
-}
-.invitation p strong { color: var(--gold2); font-weight: 500; }
-
-/* ===== SECTION TITLE ===== */
-.section-title {
-  position: relative;
-  z-index: 1;
-  text-align: center;
-  margin-bottom: 52px;
-  padding: 0 24px;
-}
-.section-title h2 {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(30px, 5vw, 52px);
-  font-weight: 300;
-  margin-bottom: 10px;
-  color: var(--text);
-}
-.section-title h2 em { font-style: italic; color: var(--gold); }
-.section-title p {
-  font-size: 13px;
-  color: var(--dim);
-  letter-spacing: 2px;
-  text-transform: uppercase;
-}
-
-/* ===== QUANTUM FIELD SPECIAL BLOCK ===== */
-.quantum-field {
-  position: relative;
-  z-index: 1;
-  max-width: 1100px;
-  margin: 0 auto 80px;
-  padding: 0 24px;
-}
-
-.quantum-cards {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
-}
-
-@media(max-width: 768px) {
-  .quantum-cards { grid-template-columns: 1fr; }
-}
-
-.qcard {
-  background: linear-gradient(145deg, rgba(26,45,80,0.9), rgba(22,37,69,0.95));
-  border: 1px solid var(--gold);
-  border-radius: 24px;
-  padding: 36px 28px;
-  text-align: center;
-  position: relative;
-  overflow: hidden;
-  transition: transform 0.3s, box-shadow 0.3s;
-}
-.qcard:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 24px 60px rgba(201,168,76,0.18);
-}
-.qcard::before {
-  content: '';
-  position: absolute; top: 0; left: 0; right: 0; height: 3px;
-  background: linear-gradient(90deg, transparent, var(--gold), transparent);
-}
-.qcard::after {
-  content: attr(data-num);
-  position: absolute;
-  bottom: -20px; right: 10px;
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 120px;
-  font-weight: 600;
-  color: rgba(201,168,76,0.07);
-  line-height: 1;
-  pointer-events: none;
-  user-select: none;
-}
-
-.qcard-icon {
-  width: 56px; height: 56px;
-  border-radius: 50%;
-  background: rgba(201,168,76,0.12);
-  border: 1px solid rgba(201,168,76,0.4);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0 auto 20px;
-  font-size: 22px;
-}
-.qcard-num {
-  font-size: 10px;
-  letter-spacing: 4px;
-  color: var(--gold);
-  text-transform: uppercase;
-  margin-bottom: 10px;
-}
-.qcard-title {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 28px;
-  font-weight: 400;
-  font-style: italic;
-  color: var(--gold2);
-  margin-bottom: 14px;
-  line-height: 1.2;
-}
-.qcard-desc {
-  font-size: 13px;
-  font-weight: 300;
-  color: var(--dim);
-  line-height: 1.7;
-}
-
-.quantum-label {
-  display: inline-block;
-  border: 1px solid rgba(201,168,76,0.4);
-  color: var(--gold);
-  font-size: 9px;
-  font-weight: 600;
-  letter-spacing: 3px;
-  text-transform: uppercase;
-  padding: 5px 16px;
-  border-radius: 50px;
-  background: rgba(201,168,76,0.06);
-  margin-bottom: 20px;
-}
-
-/* ===== MODULES GRID ===== */
-.modules-grid {
-  position: relative;
-  z-index: 1;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 24px;
-  max-width: 1100px;
-  margin: 0 auto 80px;
-  padding: 0 24px;
-}
-
-.module-card {
-  background: linear-gradient(135deg, rgba(26,48,88,0.7), rgba(22,37,69,0.9));
-  border: 1px solid var(--bord);
-  border-radius: 24px;
-  padding: 32px;
-  transition: all 0.3s ease;
-  position: relative;
-  overflow: hidden;
-}
-.module-card::before {
-  content: '';
-  position: absolute; top: 0; left: 0; right: 0; height: 2px;
-  background: linear-gradient(90deg, transparent, var(--gold), transparent);
-  opacity: 0;
-  transition: opacity 0.3s;
-}
-.module-card:hover {
-  border-color: rgba(201,168,76,0.45);
-  transform: translateY(-4px);
-  box-shadow: 0 20px 50px rgba(22,37,69,0.5);
-}
-.module-card:hover::before { opacity: 1; }
-
-.module-num {
-  font-size: 10px;
-  font-weight: 600;
-  letter-spacing: 3px;
-  text-transform: uppercase;
-  color: var(--gold);
-  margin-bottom: 8px;
-}
-.module-title {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 21px;
-  font-weight: 400;
-  font-style: italic;
-  margin-bottom: 8px;
-  line-height: 1.35;
-  color: var(--text);
-}
-.module-result {
-  font-size: 12px;
-  color: var(--pink);
-  font-weight: 500;
-  letter-spacing: 0.5px;
-  margin-bottom: 20px;
-  padding-bottom: 16px;
-  border-bottom: 1px solid var(--bord);
-}
-.module-items {
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-.module-items li {
-  font-size: 13px;
-  font-weight: 300;
-  color: var(--dim);
-  line-height: 1.5;
-  padding-left: 18px;
-  position: relative;
-}
-.module-items li::before {
-  content: '✦';
-  position: absolute;
-  left: 0;
-  color: var(--gold);
-  font-size: 7px;
-  top: 4px;
-}
-.duration-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  background: rgba(201,168,76,0.07);
-  border: 1px solid rgba(201,168,76,0.2);
-  border-radius: 50px;
-  padding: 4px 14px;
-  font-size: 10px;
-  color: var(--gold);
-  margin-top: 20px;
-  letter-spacing: 1px;
-}
-
-/* ===== FOOTER CTA ===== */
-.bottom-cta {
-  position: relative;
-  z-index: 1;
-  text-align: center;
-  padding: 80px 24px 100px;
-  max-width: 740px;
-  margin: 0 auto;
-}
-.bottom-cta h2 {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(32px, 6vw, 54px);
-  font-weight: 300;
-  line-height: 1.2;
-  margin-bottom: 20px;
-  color: var(--text);
-}
-.bottom-cta h2 em {
-  font-style: italic;
-  color: var(--gold);
-}
-.bottom-cta p {
-  font-size: 15px;
-  font-weight: 300;
-  color: var(--dim);
-  line-height: 1.8;
-  margin-bottom: 44px;
-}
-
-.price-final {
-  display: flex;
-  gap: 20px;
-  justify-content: center;
-  flex-wrap: wrap;
-  margin-bottom: 44px;
-}
-
-.pf-card {
-  background: rgba(26,45,80,0.8);
-  border: 1px solid rgba(201,168,76,0.3);
-  border-radius: 20px;
-  padding: 24px 32px;
-  min-width: 200px;
-  position: relative;
-}
-.pf-card::before {
-  content: '';
-  position: absolute; top: 0; left: 0; right: 0; height: 2px;
-  background: linear-gradient(90deg, transparent, var(--gold), transparent);
-}
-.pf-label {
-  font-size: 10px;
-  letter-spacing: 3px;
-  text-transform: uppercase;
-  color: var(--dim);
-  margin-bottom: 10px;
-}
-.pf-old {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 22px;
-  font-weight: 400;
-  color: rgba(160,188,216,0.4);
-  text-decoration: line-through;
-  text-decoration-color: var(--rline);
-  text-decoration-thickness: 2px;
-  display: block;
-  margin-bottom: 2px;
-}
-.pf-amount {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 36px;
-  font-weight: 600;
-  color: var(--gold2);
-  display: block;
-}
-.pf-sub {
-  font-size: 11px;
-  color: var(--dim);
-  margin-top: 6px;
-}
-.pf-sub.urgent { color: var(--pink); font-weight: 500; }
-
-.footer-handle {
-  margin-top: 36px;
-  font-size: 13px;
-  color: var(--dim);
-  letter-spacing: 1px;
-}
-.footer-handle strong { color: var(--gold); }
-
-/* ===== FOOTER LINE ===== */
-.site-footer {
-  position: relative;
-  z-index: 1;
-  text-align: center;
-  padding: 20px 24px 40px;
-  font-size: 9px;
-  letter-spacing: 3px;
-  color: rgba(201,168,76,0.45);
-  text-transform: uppercase;
-}
-
-/* ===== ANIMATIONS ===== */
-@keyframes fadeDown {
-  from { opacity: 0; transform: translateY(-18px); }
-  to { opacity: 1; transform: translateY(0); }
-}
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .reveal {
+    opacity: 0; transform: translateY(24px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .reveal.visible { opacity: 1; transform: none; }
 </style>
 </head>
 <body>
 
-<main>
-<div class="stars" id="stars"></div>
-
-<div class="page-wrapper">
-
-  <!-- ===== HERO ===== -->
-  <section class="hero">
-    <div class="corner tl"></div>
-    <div class="corner tr"></div>
-    <div class="corner bl"></div>
-    <div class="corner br"></div>
-
-    <div class="badge-top">Академия Квантового Пространства · Венера Татина</div>
-
-    <h1 class="hero-title"><em>Квантовый</em><br>Взлёт</h1>
-    <p class="hero-sub">Трансформация изнутри — взлёт снаружи</p>
-
-    <div class="divider">
-      <div class="divider-line"></div>
-      <span class="divider-star">✦</span>
-      <div class="divider-line r"></div>
-    </div>
-
-    <p class="hero-desc">
-      Ты живёшь по чужим сценариям, чувствуешь нехватку сил, денег, гармонии?<br><br>
-      <strong>Квантовый Взлёт</strong> — это 3 месяца глубокой системной работы с собой, которая меняет не поведение, а саму основу — твоё мышление, энергию и отношение к миру.
-    </p>
-
-    <!-- ЦЕНЫ HERO -->
-    <div class="price-hero">
-      <div class="price-card highlight">
-        <div class="price-label">Полная оплата</div>
-        <span class="price-new">150 000 ₸</span>
-        <div class="price-note deadline">специальная цена текущего набора</div>
-        <div class="price-note">3 месяца · 9 модулей</div>
-      </div>
-      <div class="price-card">
-        <div class="price-label">Внутренняя рассрочка</div>
-        <span class="price-new" style="font-size:36px;">50 000 ₸</span>
-        <div class="price-note deadline">× 3 месяца</div>
-        <div class="price-note">без банка · без переплат</div>
-      </div>
-    </div>
-
-    <a href="https://wa.me/77788633191" target="_blank" class="cta-btn">Хочу на обучение</a>
-  </section>
-
-  <!-- ===== INVITATION ===== -->
-  <div class="section-wrap">
-    <div class="invitation">
-      <h2>Ты когда-нибудь чувствовала,<br>что <span>застряла в одном месте?</span></h2>
-
-      <div class="divider">
-        <div class="divider-line"></div>
-        <span class="divider-star">✦</span>
-        <div class="divider-line r"></div>
-      </div>
-
-      <p>Деньги приходят и уходят. Отношения повторяют один и тот же сценарий. Энергии не хватает даже на мечты. Кажется, всё идёт не так — и непонятно, почему.</p>
-
-      <p>Это не случайность. Это <strong>квантовое поле</strong>, которое отражает то, что живёт у тебя внутри. Паттерны, унаследованные от рода. Решения, принятые в детстве. Убеждения, которые давно пора отпустить.</p>
-
-      <div class="divider">
-        <div class="divider-line"></div>
-        <span class="divider-star">✦</span>
-        <div class="divider-line r"></div>
-      </div>
-
-      <p><strong>Квантовый Взлёт</strong> — это не очередной курс по позитивному мышлению. Это системная трансформация через <strong>9 модулей</strong>, где ты получишь инструменты, которые работают в реальной жизни — с деньгами, здоровьем, отношениями и собой.</p>
-
-      <p>Через 3 месяца ты не узнаешь себя — в лучшем смысле этого слова. <strong>Если откликается — это твоё.</strong></p>
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-label">Академия Квантового Пространства</div>
+  <div class="photo-circle-wrap">
+    <div class="photo-circle">
+      <img src="foto-krugloye.jpg" width="160" height="160" loading="eager" alt="Венера Татина">
     </div>
   </div>
+  <h1 class="hero-name">Венера <em>Татина</em></h1>
+  <div class="divider"></div>
+  <div class="hero-title">Мастер Разборов Квантовых Полей</div>
+  <p class="hero-desc">
+    Я помогаю людям выйти из застревания — в деньгах, отношениях, здоровье —
+    через <strong>глубокую системную работу</strong> с квантовым полем.<br>
+    Не техники. Не позитивное мышление.<br>
+    <strong>Настоящая трансформация изнутри.</strong>
+  </p>
+  <div class="scroll-hint">смотреть далее</div>
+</section>
 
-  <!-- ===== РАЗБОРЫ В КВАНТОВОМ ПОЛЕ ===== -->
-  <div class="section-title">
-    <div class="quantum-label">Только в этом потоке</div>
-    <h2>Подарки на <em>твоём пути</em></h2>
-    <p>2 персональные диагностики + живой разбор — на рубежах курса</p>
+<!-- ABOUT + PORTRAIT -->
+<section class="about-section">
+  <div class="portrait-wrap reveal">
+    <div class="portrait-accent-tl"></div>
+    <div class="portrait-frame">
+      <img src="фото экспертность.jpeg" loading="lazy" alt="Венера Татина — портрет">
+    </div>
+    <div class="portrait-accent-br"></div>
   </div>
-
-  <div class="quantum-field">
-    <div class="quantum-cards">
-
-      <div class="qcard" data-num="1">
-        <div class="qcard-icon">◈</div>
-        <div class="qcard-num">Рубеж · Модуль 3</div>
-        <div class="qcard-title">Диагностика в подарок</div>
-        <div class="qcard-desc">Ты прошла треть пути — глубокую работу с принятием мамы. В подарок — персональная диагностика на выбор: деньги, здоровье, отношения или успех.</div>
-      </div>
-
-      <div class="qcard" data-num="2">
-        <div class="qcard-icon">◈</div>
-        <div class="qcard-num">Рубеж · Модуль 6</div>
-        <div class="qcard-title">Вторая диагностика</div>
-        <div class="qcard-desc">Две трети позади: принят род, выстроена любовь к себе. Ещё одна диагностика в подарок — чтобы увидеть, как изменилось твоё поле за это время.</div>
-      </div>
-
-      <div class="qcard" data-num="3">
-        <div class="qcard-icon">◈</div>
-        <div class="qcard-num">Рубеж · Модуль 9</div>
-        <div class="qcard-title">Персональный разбор</div>
-        <div class="qcard-desc">Ты завершила курс — и главный подарок ждёт здесь: живой персональный разбор в квантовом поле. Закрепляем трансформацию и открываем следующий уровень.</div>
-      </div>
-
+  <div class="reveal">
+    <div class="section-label">О себе</div>
+    <div class="about-text">
+      <p>Я <span class="highlight">Венера Татина</span> — Мастер Разборов Квантовых Полей.
+      Работаю на пересечении системных разборов, квантового мышления и глубинной психологии.</p>
+      <p>Со своей стороны могу сказать что жизнь меняется не тогда,
+      когда меняешь действия — а когда меняешь <span class="highlight">поле, из которого действуешь.</span></p>
+      <p>Моя миссия — дать тебе ключ к своему пространству. Туда, где рождаются деньги,
+      любовь, здоровье и спокойствие.</p>
     </div>
   </div>
+</section>
 
-  <div class="gold-line" style="max-width:1100px; margin: 0 auto 80px; display:block;"></div>
+<div class="ornament reveal">✦ · ✦ · ✦</div>
 
-  <!-- ===== ПРОГРАММА ===== -->
-  <div class="section-title">
-    <h2>9 модулей · <em>3 месяца</em></h2>
-    <p>Онлайн · Обратная связь · Глубокая трансформация</p>
-  </div>
-
-  <div class="modules-grid">
-
-    <div class="module-card">
-      <div class="module-num">Модуль 1 · 90 дней</div>
-      <div class="module-title">Знакомство с системным подходом к жизни</div>
-      <div class="module-result">→ Твоя жизнь не будет прежней</div>
-      <ul class="module-items">
-        <li>Системное мышление как основа всего</li>
-        <li>Новое окружение единомышленников</li>
-        <li>Правила курса «с наставлением»</li>
-        <li>Что такое инсайты и как их использовать</li>
-        <li>Научишься фокусироваться на результате</li>
-      </ul>
-      <div class="duration-badge">⏱ 90 дней · Online</div>
-    </div>
-
-    <div class="module-card">
-      <div class="module-num">Модуль 2 · 90 дней</div>
-      <div class="module-title">Законы мира — три фундамента успеха</div>
-      <div class="module-result">→ Деньги, здоровье и отношения в гармонии</div>
-      <ul class="module-items">
-        <li>Три фундамента для денег, здоровья и отношений</li>
-        <li>Выход из родовых повторяющихся сценариев</li>
-        <li>Почему деньги приходят в малом количестве</li>
-        <li>Как создаются долги и кредиты</li>
-        <li>Выход из апатии и безысходности</li>
-      </ul>
-      <div class="duration-badge">⏱ 90 дней · Online</div>
-    </div>
-
-    <div class="module-card">
-      <div class="module-num">Модуль 3 · 90 дней</div>
-      <div class="module-title">Принятие мамы — доверие к миру и к деньгам</div>
-      <div class="module-result">→ Доверие к миру = путь к успеху</div>
-      <ul class="module-items">
-        <li>Начнут приходить новые возможности</li>
-        <li>Научишься чувствовать истинные желания</li>
-        <li>Жизнь через любовь к себе</li>
-        <li>Уйдут агрессия, злость, обида</li>
-        <li>Женственность и жизнь в моменте</li>
-      </ul>
-      <div class="duration-badge">⏱ 90 дней · Online</div>
-    </div>
-
-    <div class="module-card">
-      <div class="module-num">Модуль 4 · 90 дней</div>
-      <div class="module-title">Принятие папы — сила достигать целей</div>
-      <div class="module-result">→ Уйдёт хаос, придёт опора внутри</div>
-      <ul class="module-items">
-        <li>Достигать цели = стратегически планировать</li>
-        <li>Начнёшь действовать по плану в сторону масштаба</li>
-        <li>Почувствуешь опору внутри себя</li>
-        <li>Уйдут агрессия и обида к мужскому полу</li>
-        <li>Даже если папы не было — результат будет</li>
-      </ul>
-      <div class="duration-badge">⏱ 90 дней · Online</div>
-    </div>
-
-    <div class="module-card">
-      <div class="module-num">Модуль 5 · 90 дней</div>
-      <div class="module-title">Принятие рода — ресурс и энергия</div>
-      <div class="module-result">→ Прилив сил, новые возможности</div>
-      <ul class="module-items">
-        <li>Начнёшь чувствовать прилив сил и энергии</li>
-        <li>Примешь вклад своего рода в тебя</li>
-        <li>Выход из негативных установок</li>
-        <li>Почувствуешь себя целостной</li>
-        <li>С каждым днём больше успешных людей рядом</li>
-      </ul>
-      <div class="duration-badge">⏱ 90 дней · Online</div>
-    </div>
-
-    <div class="module-card">
-      <div class="module-num">Модуль 6 · 90 дней</div>
-      <div class="module-title">Жизнь через любовь к себе — жизнь мечты</div>
-      <div class="module-result">→ Ты на первом месте — экологично и без вины</div>
-      <ul class="module-items">
-        <li>Говорить «нет» людям ради своего «да»</li>
-        <li>Правильно формулировать желания</li>
-        <li>Появится ценность в себе</li>
-        <li>Обретёшь уверенность в себе</li>
-        <li>Выстроишь личные границы</li>
-      </ul>
-      <div class="duration-badge">⏱ 90 дней · Online</div>
-    </div>
-
-    <div class="module-card">
-      <div class="module-num">Модуль 7 · 90 дней</div>
-      <div class="module-title">Я — творец своей жизни. Полное спокойствие в душе</div>
-      <div class="module-result">→ Жизнь в лёгкости и масштабе</div>
-      <ul class="module-items">
-        <li>Научишься планировать сценарии счастливой жизни</li>
-        <li>Каждый день — новые идеи и вдохновение</li>
-        <li>Забудешь что такое апатия и хандра</li>
-        <li>Уйдут осуждение и агрессия</li>
-        <li>Жизнь здесь и сейчас — системно</li>
-      </ul>
-      <div class="duration-badge">⏱ 90 дней · Online</div>
-    </div>
-
-    <div class="module-card">
-      <div class="module-num">Модуль 8 · 90 дней</div>
-      <div class="module-title">Счастливые гармоничные отношения — фундамент семьи</div>
-      <div class="module-result">→ Формула счастливого брака</div>
-      <ul class="module-items">
-        <li>Уйдут обиды к партнёру</li>
-        <li>Откроется доверие и уйдут измены</li>
-        <li>Обретёшь идеальные отношения</li>
-        <li>Перестанешь быть мамой или ребёнком для партнёра</li>
-        <li>Пойдёт успех у детей</li>
-      </ul>
-      <div class="duration-badge">⏱ 90 дней · Online</div>
-    </div>
-
-    <div class="module-card">
-      <div class="module-num">Модуль 9 · 90 дней</div>
-      <div class="module-title">Выход из детской позиции — осознанность в любой ситуации</div>
-      <div class="module-result">→ Деньги, решения и жизнь с взрослой позиции</div>
-      <ul class="module-items">
-        <li>Деньги будут приходить системно</li>
-        <li>Выйдешь из состояния жертвы</li>
-        <li>Начнёшь закрывать долги и кредиты</li>
-        <li>Научишься копить деньги</li>
-        <li>Придёт чёткое ощущение: я умею, я смогу</li>
-      </ul>
-      <div class="duration-badge">⏱ 90 дней · Online</div>
-    </div>
-
-  </div>
-
-  <!-- ===== BOTTOM CTA ===== -->
-  <section class="bottom-cta">
-    <h2>Готова к своему<br><em>Квантовому Взлёту?</em></h2>
-    <p>Напиши мне — и мы вместе разберём, подходит ли тебе это обучение прямо сейчас. Без давления, без обязательств — просто честный разговор.</p>
-
-    <div class="price-final">
-      <div class="pf-card">
-        <div class="pf-label">Полная оплата</div>
-        <span class="pf-amount">150 000 ₸</span>
-        <div class="pf-sub urgent">специальная цена текущего набора</div>
-        <div class="pf-sub">3 месяца · 9 модулей</div>
-      </div>
-      <div class="pf-card">
-        <div class="pf-label">Внутренняя рассрочка</div>
-        <span class="pf-amount">50 000 ₸</span>
-        <div class="pf-sub urgent">× 3 месяца</div>
-        <div class="pf-sub">без банка · без переплат</div>
-      </div>
-    </div>
-
-    <a href="https://wa.me/77788633191" target="_blank" class="cta-btn">Написать Венере в WhatsApp</a>
-
-    <div class="footer-handle">WhatsApp → <strong>+7 778 863 31 91</strong> · Венера</div>
-  </section>
-
+<div class="cards-label reveal">Мои программы</div>
+<div class="cards">
+  <a class="card reveal" href="https://vetatina-hub.github.io/kvantoviy-vzlet/" target="_blank">
+    <div class="card-tag">Курс · 3 месяца · 9 модулей</div>
+    <div class="card-title">Квантовый <em>Взлёт</em></div>
+    <div class="card-desc">Флагманская программа трансформации. Глубокая системная работа с мышлением, энергией и квантовым полем — деньги, отношения, здоровье, себя.</div>
+    <div class="card-cta">Узнать подробнее</div>
+  </a>
+  <a class="card reveal" href="https://vetatina-hub.github.io/alkhimiya-deneg" target="_blank">
+    <div class="card-tag">Мастер-класс · 16 мая · 4 часа</div>
+    <div class="card-title"><em>Алхимия</em> денег</div>
+    <div class="card-desc">Полная ревизия твоих денег — разберём долги, блоки и откроем путь к новым заработкам. Специальная цена 10 000 тенге.</div>
+    <div class="card-cta">Узнать подробнее</div>
+  </a>
+  <a class="card reveal" href="https://wa.me/77788633191" target="_blank">
+    <div class="card-tag">Личное сопровождение · 3 месяца</div>
+    <div class="card-title">Наставни<em>чество</em></div>
+    <div class="card-desc">Персональная работа с Венерой. Разбор раз в неделю на протяжении трёх месяцев — 12 глубоких сессий, выстроенных под твою ситуацию и цели.</div>
+    <div class="card-cta">Узнать условия</div>
+  </a>
+  <a class="card card-wa reveal" href="https://t.me/venera_tatina_bot" target="_blank">
+    <div class="card-tag">Бесплатно · Telegram</div>
+    <div class="card-title">Пройди бесплатный <em>тест</em></div>
+    <div class="card-desc">Узнай, что на самом деле держит тебя в застревании — тест за 2 минуты. А в подарок — практика трансформации.</div>
+    <div class="card-cta">Пройти тест в Telegram</div>
+  </a>
+  <a class="card card-wa reveal" href="https://wa.me/77788633191" target="_blank">
+    <div class="card-tag">Связь</div>
+    <div class="card-title">Написать <em>в WhatsApp</em></div>
+    <div class="card-desc">Есть вопрос? Хочешь понять, что тебе подойдёт?<br>Напиши — отвечу лично.</div>
+    <div class="card-cta">+7 778 863 31 91</div>
+  </a>
 </div>
 
-<!-- FOOTER -->
-<div class="gold-line"></div>
-<footer class="site-footer">
-  К В А Н Т О В Ы Й &nbsp; В З Л Ё Т &nbsp; · &nbsp; В Е Н Е Р А &nbsp; Т А Т И Н А
+<footer>
+  В Е Н Е Р А &nbsp; Т А Т И Н А &nbsp; · &nbsp; А К А Д Е М И Я &nbsp; К В А Н Т О В О Г О &nbsp; П Р О С Т Р А Н С Т В А
 </footer>
 
 <script>
-const container = document.getElementById('stars');
-for (let i = 0; i < 60; i++) {
-  const star = document.createElement('div');
-  star.className = 'star';
-  const size = Math.random() * 2.5 + 0.4;
-  star.style.cssText = `
-    width:${size}px; height:${size}px;
-    left:${Math.random()*100}%;
-    top:${Math.random()*100}%;
-    --dur:${Math.random()*4+2}s;
-    --op:${Math.random()*0.6+0.15};
-    animation-delay:${Math.random()*6}s;
-  `;
-  container.appendChild(star);
-}
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        setTimeout(() => e.target.classList.add('visible'), i * 100);
+      }
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 </script>
-</main>
-</main>
 </body>
 </html>
